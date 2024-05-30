@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import createAuth0Client from '@auth0/auth0-spa-js';
+import { createAuth0Client } from '@auth0/auth0-spa-js';  // Corrected import
 
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () =>
@@ -73,7 +73,6 @@ export const useAuth0 = ({
         return this.auth0Client.getTokenSilently(o);
       },
       /** Gets the access token using a popup window */
-
       getTokenWithPopup(o) {
         return this.auth0Client.getTokenWithPopup(o);
       },
@@ -87,7 +86,7 @@ export const useAuth0 = ({
       // Create a new instance of the SDK client using members of the given options object
       this.auth0Client = await createAuth0Client({
         domain: options.domain,
-        client_id: options.clientId,
+        clientId: options.clientId,
         audience: options.audience,
         redirect_uri: redirectUri,
       });
